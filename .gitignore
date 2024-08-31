@@ -1,0 +1,84 @@
+# Jekyll specific
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby specific
+Gemfile.lock
+vendor/bundle/
+vendor/cache/
+vendor/gems/
+vendor/ruby/
+
+# Node.js specific
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/package-lock.json
+.yarn-integrity
+.pnpm-debug.log*
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+*.sql
+*.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor specific
+*.swp
+*~
+.project
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Temporary files and folders
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Asset compilations
+assets/css/*.map
+assets/js/*.map
+assets/js/**/*.map
+
+# Build and deployment artifacts
+_site/
+.sass-cache/
+.gh-pages/
+.deploy/
+*.gem
+
+# Ignore application specific
+coverage/
+spec/reports/
+coverage/**/*
+
+# Ignore test, cache, and CI/CD generated files
+/coverage/
+/tests/
+/test-results.xml
+/test-results/
+/junit-report.xml
+/.coverage
+/coverage-summary.json
+
+# Ignore lockfiles (unless you specifically want to include them)
+npm-shrinkwrap.json
+yarn.lock
+.pnpm-lock.yaml
+
+# Ignore macOS generated files
+.AppleDouble
+.LSOverride
+__MACOSX/
