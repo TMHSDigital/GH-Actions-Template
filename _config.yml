@@ -2,8 +2,8 @@
 title: GH Actions Jekyll Template
 description: >
   A modular Jekyll site template integrated with GitHub Actions for automated deployment and code quality checks.
-baseurl: "" # the subpath of your site, e.g., /blog
-url: "https://TMHSDigital.github.io/GH-Actions-Template" # your GitHub Pages URL
+baseurl: "/GH-Actions-Template" # The subpath of your site, e.g., /blog
+url: "https://TMHSDigital.github.io" # Your GitHub Pages URL
 
 # Author settings
 author:
