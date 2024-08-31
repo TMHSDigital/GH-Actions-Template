@@ -1,0 +1,14 @@
+title: GH Actions Jekyll Site
+description: >- 
+  A simple Jekyll site powered by GitHub Pages.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://TMHSDigital.github.io" # your GitHub Pages URL
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
