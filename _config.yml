@@ -1,77 +1,78 @@
-# Site settings
-title: GH Actions Jekyll Template
-description: >
-  A modular Jekyll site template integrated with GitHub Actions for automated deployment and code quality checks.
-baseurl: "/GH-Actions-Template" # The subpath of your site, e.g., /blog
-url: "https://TMHSDigital.github.io" # Your GitHub Pages URL
+name: Jekyll Site CI/CD
 
-# Author settings
-author:
-  name: "TMHSDigital"
-  email: "contact@example.com"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 0' # Weekly schedule, adjust as needed
 
-# Build settings
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-  - jekyll-paginate
-  - jekyll-archives
-  - jekyll-sass-converter
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-# Pagination settings
-paginate: 5
-paginate_path: "/page:num/"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
 
-# Sass/SCSS settings
-sass:
-  style: compressed # Minify the CSS output
+      - name: Install Ruby dependencies
+        run: bundle install
 
-# Collections
-collections:
-  my_collection:
-    output: true
-    permalink: /:collection/:name
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
 
-# Defaults for pages and posts
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-      future: true
+      - name: Install Node.js dependencies
+        run: npm install
 
-# Exclude these files from the build
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/
-  - .bundle/
-  - .jekyll-cache/
-  - .jekyll-metadata
-  - .sass-cache/
-  - .git/
-  - .github/
-  - README.md
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
 
-# Include these files in the build
-include:
-  - _pages/
-  - _posts/
-  - assets/
-  - _components/
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
 
-# Permalinks settings
-permalink: pretty
+  check-duplicates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-# Site-wide variables (optional)
-custom_variable: "This is a custom variable"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install flay
+        run: gem install flay
+
+      - name: Check for Duplicate Code
+        run: flay . --diff
+
+  code-quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Run RuboCop
+        run: bundle exec rubocop
+
+      - name: Run ESLint
+        run: npm run lint
