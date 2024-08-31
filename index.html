@@ -3,46 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <title>Welcome to GH Actions Jekyll Template</title>
+    <link rel="stylesheet" href="/assets/main.css">
 </head>
 <body>
     <header>
         <h1>{{ site.title }}</h1>
         <p>{{ site.description }}</p>
-        <nav>
-            <ul>
-                <li><a href="{{ '/' | relative_url }}">Home</a></li>
-                <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-                <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-            </ul>
-        </nav>
     </header>
-
-    <main>
-        <h2>Latest Posts</h2>
+    
+    <nav>
         <ul>
-            {% for post in paginator.posts %}
-            <li>
-                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-                <p>{{ post.excerpt }}</p>
-            </li>
-            {% endfor %}
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
         </ul>
-
-        <div class="pagination">
-            {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
-            {% endif %}
-
-            {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | relative_url }}">Next</a>
-            {% endif %}
-        </div>
+    </nav>
+    
+    <main>
+        <section>
+            <h2>Welcome to GH Actions Jekyll Template</h2>
+            <p>This is a modular Jekyll site template integrated with GitHub Actions for automated deployment and code quality checks.</p>
+            <p>Feel free to customize the content and layout to suit your needs.</p>
+        </section>
     </main>
-
+    
     <footer>
-        <p>&copy; {{ site.author.name }}. All rights reserved.</p>
+        <p>&copy; {{ site.author.name }}</p>
     </footer>
 </body>
 </html>
