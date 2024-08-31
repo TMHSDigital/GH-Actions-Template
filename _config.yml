@@ -48,6 +48,9 @@ defaults:
     values:
       layout: "default"
 
+# Enable future posts
+future: true
+
 # Exclude these files from the build
 exclude:
   - Gemfile
