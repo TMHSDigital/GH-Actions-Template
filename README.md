@@ -79,7 +79,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ---
 
 This README was auto-generated for the purpose of tracking the status of the Jekyll site and the associated GitHub Actions. Customize it as needed!
-```
+
+---
 
 ### Instructions to Add the `README.md`
 
@@ -93,6 +94,9 @@ This README was auto-generated for the purpose of tracking the status of the Jek
 
    ```powershell
    @'
+
+---
+
 # GH Actions Jekyll Template
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TMHSDigital/GH-Actions-Template)
