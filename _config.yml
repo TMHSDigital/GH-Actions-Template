@@ -1,14 +1,76 @@
-title: GH Actions Jekyll Site
-description: >- 
-  A simple Jekyll site powered by GitHub Pages.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://TMHSDigital.github.io" # your GitHub Pages URL
+# Site settings
+title: GH Actions Jekyll Template
+description: >
+  A modular Jekyll site template integrated with GitHub Actions for automated deployment and code quality checks.
+baseurl: "" # the subpath of your site, e.g., /blog
+url: "https://TMHSDigital.github.io/GH-Actions-Template" # your GitHub Pages URL
+
+# Author settings
+author:
+  name: "TMHSDigital"
+  email: "contact@example.com"
 
 # Build settings
 markdown: kramdown
 theme: minima
-
-# Plugins
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-archives
+  - jekyll-sass-converter
+
+# Pagination settings
+paginate: 5
+paginate_path: "/page:num/"
+
+# Sass/SCSS settings
+sass:
+  style: compressed # Minify the CSS output
+
+# Collections
+collections:
+  my_collection:
+    output: true
+    permalink: /:collection/:name
+
+# Defaults for pages and posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Exclude these files from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - .bundle/
+  - .jekyll-cache/
+  - .jekyll-metadata
+  - .sass-cache/
+  - .git/
+  - .github/
+  - README.md
+
+# Include these files in the build
+include:
+  - _pages/
+  - _posts/
+  - assets/
+  - _components/
+
+# Permalinks settings
+permalink: pretty
+
+# Site-wide variables (optional)
+custom_variable: "This is a custom variable"
