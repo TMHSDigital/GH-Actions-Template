@@ -1,0 +1,25 @@
+name: Check for Duplicate Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  flay:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1'
+
+    - name: Install flay
+      run: gem install flay
+
+    - name: Run flay to detect code duplication
+      run: flay .
